@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>栏目详情页面</title>
+	<script type="text/javascript" src="juicer-min.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){	
+		var data = {
+		    list: [
+			        {name:' 学院简介'},
+			        {title:'软件学院'},
+
+			    ],
+		    blah: [
+		         {num1: 1},
+		         {num2:2},
+		         {author:'系统管理员'},
+		         {time:'2016/12/15'},	         
+		     ]
+		};
+
+		var tpl = document.getElementById('tpl').innerHTML;//获取模板中的代码
+		var html = juicer(tpl, data);//根据所给的数据渲染模板
+		console.log(html);
+		var oBd=document.getElementById('bd');//获取页面body
+		oBd.innerHTML=html;//将渲染后的结果插入页面
+	};
+	</script>
+</head>
+<body >
+	 <div id="bd">
+<script id="tpl" type="text/template">
+	<table border="1" bordercolor="#000000" width="700">
+	    <tr>
+	        <th>栏目</th>
+	        <th>标题</th>
+	        <th>权重</th>
+	        <th>点击数</th>
+	        <th>发布者</th>
+	        <th>更新时间</th>
+	        <th>操作</th>
+	    </tr>
+	    <tr>
+	       {@each list as it,index}
+	            <td>
+	               ${it.name} 
+	               ${it.title} 
+	            </td>
+	        {@/each}
+	        	{@each blah as it}
+	            <td>
+	               ${it.num1} 
+	               ${it.num2} 
+				   ${it.author}
+                   ${it.time}
+	            </td>
+	        {@/each}
+	        <td>
+   				<a href="#">访问</a>
+   				<a href="#">修改</a>
+   				<a href="#">删除</a>
+	        </td>
+	    </tr>
+	   
+	  
+	</table>
+	</script>
+	 </div>
+	
+</body>
+</html>
